@@ -1,0 +1,92 @@
+<!--
+  File: menu.html
+  MENU LATERAL PAGINA WEB
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<!--TITULO-->
+	<title>MENU</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Relacion externa a fichero style.css para el estilo -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+
+     <!-- SECCION CENTRAL DE LA PAGINA -->
+  <section>
+
+    <!-- MENU IZQUIERDO DE LA PAGINA -->
+    <nav>
+
+    <p id="HEADER_PLANTA"></p>
+
+		<p id="buscador">
+				<input id="barra" type="search" name="uwufilmsearch">
+				<input id="boton_buscar" type="submit" value="Buscar">
+		</p>
+
+		<select name="Busqueda" id="desplegable">
+			 <option value="1">Por Director</option>
+			 <option value="2">Por Género</option>
+			 <option value="3">Por Nombre</option>
+		</select>
+
+    <p> </p>
+
+		<form method="get" action="index.html" target="_parent">
+    <button class="menu">
+       &nbsp; &nbsp; &nbsp; Recientes
+    </button>
+		</form>
+
+		<form method="get" action="index.html" target="_parent">
+    <button class="menu">
+       &nbsp; &nbsp; &nbsp; Más vendidas
+    </button>
+		</form>
+
+		<form method="get" action="index.html" target="_parent">
+    <button class="menu">
+       &nbsp; &nbsp; &nbsp; Mejor valoradas
+    </button>
+		</form>
+
+		<form method="get" action="index.html" target="_parent">
+    <button class="menu">
+       &nbsp; &nbsp; &nbsp; Por Orden
+    </button>
+		</form>
+
+		<form method="get" action="historial.html" target="_parent">
+    <button class="menu">
+       &nbsp; &nbsp; &nbsp; Tu historial
+    </button>
+		</form>
+
+    <p>  </p>
+
+    <p id="logo">
+      <img src="fotos/logo.png" alt="SAD"
+      width="269" height="150">
+    </p>
+
+		<form method="get" action="index.html" target="_parent">
+    <button class="carrito">
+      <img src="fotos/carrito.png" alt="SAD" width="60" height="45">
+    </button>
+		</form>
+
+    </nav>
+
+  </section>
+
+</body>
+</html>

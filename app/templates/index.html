@@ -1,0 +1,67 @@
+<!--
+  File: index.html
+  PAGINA PRINCIPAL
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+{% extends "base.html" %}
+
+	{% block contenido %}
+
+		<p id="HEADER_PLANTA"></p>
+
+		<div>
+
+			<div id="login_registro">
+
+				{% if session['usuario'] %}
+				    <form method="get" action={{ url_for('logout') }} target="_parent">
+						<button id="login"> Cerrar sesión </button>
+					</form>
+
+					<form method="get" action={{ url_for('perfil') }} target="_parent">
+						<button id="registro"> {{ session['usuario'] }} </button>
+					</form>
+				{% else %}
+					<form method="get" action={{ url_for('login') }} target="_parent">
+						<button id="login"> Iniciar Sesion </button>
+					</form>
+
+					<form method="get" action={{ url_for('registro') }} target="_parent">
+						<button id="registro"> Registrarse </button>
+					</form>
+				{% endif %}
+
+			</div>
+
+			<div id="peliculas">
+
+				{% for item in movies %}
+					<div id="peli">
+						{% if ventas %}
+								<button id="peli_boton">
+									<img class="imagen_peli" src={{ url_for('static', filename='imagenes/uwuf.jpg') }} alt="F">
+								</button>
+								<p id="nombree"> Titulo: {{item.pelicula}}</p>
+								<p id="nombree"> Año: {{item.anyo}}</p>
+								<p id="nombree"> Ventas: {{item.ventas}}</p>
+						{% else %}
+							<form  class="enlace_negro"  method="post" action={{ url_for('detalle') }}>
+									<input type="hidden" name="id_pelicula" value="{{item.movieid}}"/>
+									<p id="nombree">{{item.movietitle}}</p>
+									<button id="peli_boton">
+										<img class="imagen_peli" src={{ url_for('static', filename='imagenes/uwuf.jpg') }} alt="F">
+									</button>
+							</form>
+						{% endif %}
+					</div>
+				{% endfor %}
+
+			</div>
+
+		</div>
+
+		<p id="FOOTER_PLANTA"></p>
+
+ {% endblock %}

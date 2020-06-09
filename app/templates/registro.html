@@ -1,0 +1,40 @@
+<!--
+  File: registro.html
+  PAGINA DE REGISTRO
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+{% extends "base.html" %}
+
+			{% block contenido %}
+
+				<div class="contenedor_centro">
+
+					<div id="reg">
+						<p class="negrita"> Registro </p>
+					</div>
+
+					<div id="formulario">
+						<form action={{ url_for('crear_usuario') }} method="post"
+							  name="formulario" onsubmit="return validar(this)">
+
+							<p>Nombre de usuario:  <input id="barra1" class="rellenar" type="text" name="nombre"></p>
+							<p>Contraseña: <input id="barra2_fortaleza" class="rellenar" type="password" name="contrasenia"> </p>
+							<p>Contraseña(confirmar): <input id="barra5" class="rellenar" type="password" name="contrasenia2"> </p>
+							<p>Email:  <input id="barra3" class="rellenar" type="text" name="email"></p>
+							<p>Tarjeta de credito:  <input id="barra4" class="rellenar" type="text" name="tarjeta"></p>
+							<p>
+								<input id="crear_cuenta" type="submit" value="Crear Cuenta">
+							</p>
+
+						</form>
+					</div>
+
+					{% for item in mensaje %}
+						<p id="mensaje_error">{{item}}</p>
+					{% endfor %}
+
+				</div>
+
+		{% endblock %}

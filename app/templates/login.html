@@ -1,0 +1,41 @@
+<!--
+  File: login.html
+  PAGINA DE INICIO DE SESION
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+{% extends "base.html" %}
+
+		{% block contenido %}
+
+				<div class="contenedor_centro">
+
+					<div id="reg">
+						<p class="negrita"> Inicia sesión </p>
+					</div>
+
+					<div id="inicio_sesion">
+						<form action={{ url_for('iniciar_sesion') }} method="post">
+
+							{% if usuario_anterior %}
+								<p>Nombre de usuario:  <input id="barra1" class="rellenar" type="text" name="nombre" value={{usuario_anterior}}></p>
+						    {% else %}
+						        <p>Nombre de usuario:  <input id="barra1" class="rellenar" type="text" name="nombre"></p>
+						    {% endif %}
+
+							<p>Contraseña: <input id="barra2" class="rellenar" type="password" name="contrasenia"> </p>
+							<p>
+								<input id="boton_login" type="submit" value="Iniciar sesión">
+							</p>
+
+						</form>
+					</div>
+
+					{% for item in mensaje %}
+					<p id="mensaje_error">{{item}}</p>
+					{% endfor %}
+
+				</div>
+
+		{% endblock %}

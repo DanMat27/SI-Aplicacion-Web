@@ -1,0 +1,82 @@
+<!--
+  File: carrito.html
+  PAGINA CARRITO DE LA COMPRA
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+{% extends "base.html" %}
+
+		{% block contenido %}
+
+				<p id="HEADER_PLANTA"></p>
+
+				{% if session['usuario'] %}
+					<form method="get" action={{ url_for('perfil') }} target="_parent">
+					<button class="usuario">{{ session['usuario'] }}</button>
+					</form>
+
+					<form method="get" action={{ url_for('logout') }} target="_parent">
+					<button class="usuario">Cerrar sesión</button>
+					</form>
+				{% else %}
+					<!--BOTON DE USUARIO-->
+					<form method="get" action={{ url_for('registro') }} target="_parent">
+					<button class="usuario"> Registrarse </button>
+					</form>
+
+					<!--BOTON DE CERRAR SESION-->
+					<form method="get" action={{ url_for('login') }} target="_parent">
+					<button class="usuario"> Iniciar sesión</button>
+					</form>
+				{% endif %}
+
+				{% for item in mensaje %}
+					<p id="mensaje_error">{{item}}</p>
+				{% endfor %}
+
+				<!--CONTENEDOR DE LA INFORMACION DEL CARRITO-->
+				<div id="peliculas_carrito">
+
+					{% for item in movies %}
+
+					<!--IMAGEN Y DATOS PELI-->
+					<div>
+							<div>
+									<a class="enlace_negro">
+										<img class="imagen_peli" src={{ url_for('static', filename=item['poster']) }} alt="F">
+									</a>
+							</div>
+
+							<div id="RESUMEN_PELI">
+									<ins>Título:</ins>  {{item.titulo}}<br>
+                                    <p><ins>Precio:</ins>  {{item.precio}} €</p>
+					 		</div>
+				 	</div>
+                    <div>
+                        <!--BOTON DE DESCARTAR PAGO-->
+						<form method="post" action={{ url_for('descartar_carrito') }} target="_parent">
+								<input type="hidden" name="pelicula" value="{{item.id}}"/>
+								<button id="descartar_pago"> Descartar del carrito </button>
+						</form>
+                    </div>
+
+					{% endfor %}
+
+				</div>
+
+				{% if session['carrito'] %}
+				<div>
+					<!--BOTON DE CONFIRMAR PAGO-->
+					<p id="precio_total">Precio total: {{precio}} €</p>
+					<form method="post" action={{ url_for('pagar_carrito') }} target="_parent">
+						<button id="confirmar_pago"> Confirmar compra </button>
+					</form>
+				</div>
+				{% else %}
+					<p id="mensaje_error">El carrito está vacío</p>
+				{% endif %}
+
+				<p id="FOOTER_PLANTA"></p>
+
+		{% endblock %}

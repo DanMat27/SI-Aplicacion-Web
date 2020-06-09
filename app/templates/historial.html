@@ -1,0 +1,48 @@
+<!--
+  File: historial.html
+  PAGINA HISTORIAL
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+{% extends "base.html" %}
+
+		{% block contenido %}
+
+		    <p id="HEADER_PLANTA"></p>
+
+				{% if session['usuario'] %}
+					<form method="get" action={{ url_for('perfil') }} target="_parent">
+					<button class="usuario">{{ session['usuario'] }}</button>
+					</form>
+
+					<form method="get" action={{ url_for('logout') }} target="_parent">
+					<button class="usuario">Cerrar sesión</button>
+					</form>
+				{% endif %}
+
+				<h3 id="TUHISTORIAL"><ins>Tu historial:</ins></h3>
+				<table>
+					<tr>
+						<th>Fecha</th>
+						<th>Precio(€)</th>
+						<th>Estado</th>
+						<th>Mas detalles</th>
+					</tr>
+					{% for item in movies %}
+					<tr>
+						<td>{{item.orderdate}}</td>
+						<td>{{item.totalamount}}</td>
+						<td>{{item.status}}</td>
+						<td><h1 class="flip">TAX<h1>
+								<div class="panel">
+								<p>{{item.tax}}%</p>
+								<p>Precio neto: {{item.netamount}} €</p>
+								</div>
+						</td>
+					</tr>
+					{% endfor %}
+
+				</table>
+
+		{% endblock %}

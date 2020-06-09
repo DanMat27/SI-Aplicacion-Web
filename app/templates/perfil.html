@@ -1,0 +1,38 @@
+<!--
+  File: perfil.html
+  PAGINA DE PERFIL DEL USUARIO
+  Autores: Daniel Mateo
+           Aitor Melero
+-->
+
+{% extends "base.html" %}
+
+		{% block contenido %}
+
+				<p id="HEADER_PLANTA"></p>
+                <div id="log">
+                    <form method="get" action={{ url_for('logout') }} target="_parent">
+                        <button id="login"> Cerrar sesión </button>
+                    </form>
+                </div>
+
+                {% for item in dic %}
+
+                <p id="bienvenido"> Bienvenido {{ session['usuario'] }} </p>
+
+                <p id="mail_user"> E-mail: {{ session['usuario'] }} </p>
+
+                <p id="tarjeta_user"> Num. tarjeta: {{ item.creditcard }} </p>
+
+                <p id="saldo"> Saldo actual: {{ item.income }} € </p>
+
+                <form id="aumentar_saldo" method="post" action={{ url_for('aumentar_saldo') }} target="_parent">
+                    <input type="hidden" name="money" value="{{ item.income }}">
+                    <input id="barra_saldo" type="search" name="aumento">
+                    <input id="boton_saldo" type="submit" value="Aumentar saldo" target="_parent">
+                </form>
+                <p id="FOOTER_PLANTA"></p>
+                
+                {% endfor %}
+
+		{% endblock %}
