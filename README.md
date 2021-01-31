@@ -5,4 +5,4 @@ Aplicación web desarrollada durante las prácticas de Sistemas Informáticos. C
 
 Realizado mediante el framework de Flask. Lenguaje Python.
 
-Autores: DanMat27 y Aitor.
+Autores: Daniel Mateo y Aitor Melero.
